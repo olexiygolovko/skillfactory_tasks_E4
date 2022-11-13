@@ -11,13 +11,16 @@
 
 class ElectricalAppliance {
   
-    constructor(power) {
+    constructor(power, workingMinutes) {
       this.power = power;
+      this.workingMinutes = workingMinutes;
     }
   
     switchOn() {
       console.log('State: switched ON')
       console.log(`Power consumption: ${this.power} Watt`)
+      console.log(`Total power consumption: ${this.power * this.workingMinutes} Watt`)
+
     }
     
     switchOff() {
@@ -29,8 +32,8 @@ class ElectricalAppliance {
   // Tea kettle
   class Kettle extends ElectricalAppliance {
     
-    constructor(power) {
-      super(power);
+    constructor(power, workingMinutes) {
+      super(power, workingMinutes);
       this.waterVolume = 0.0;
     }
     
@@ -47,8 +50,8 @@ class ElectricalAppliance {
   // Vacuum cleaner
   class VacuumCleaner extends ElectricalAppliance {
     
-    constructor(power) {
-      super(power);
+    constructor(power, workingMinutes) {
+      super(power, workingMinutes);
       this.isContainerFull = true;
     }
     
@@ -59,14 +62,14 @@ class ElectricalAppliance {
   }
   
   
-  const teaKettle = new Kettle(900);
+  const teaKettle = new Kettle(33, 2);
   teaKettle.switchOn();
   if (!teaKettle.hasWater()) {
     teaKettle.pourWater(1)
   }
   console.log(`teaKettle has ${teaKettle.waterVolume} liter`)
   
-  const vacuumCleaner = new VacuumCleaner(1800);
+  const vacuumCleaner = new VacuumCleaner(25, 10);
   vacuumCleaner.switchOn();
   if (vacuumCleaner.isContainerFull) {
     vacuumCleaner.cleanContainer()
